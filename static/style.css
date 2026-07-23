@@ -1,0 +1,343 @@
+/* ------------------------------------------------------------------ */
+/* Reel Match — a marquee / ticket-stub themed design system            */
+/* Palette: #14110F (ink), #1E1A16 (panel), #F4E9D8 (marquee cream),    */
+/*          #D4AF37 (marquee gold), #B4483A (velvet red), #6E7B6A (sage)*/
+/* Type: Bebas Neue (display/marquee), Inter (body), JetBrains Mono (data)*/
+/* ------------------------------------------------------------------ */
+
+:root {
+    --ink: #14110F;
+    --panel: #1E1A16;
+    --panel-raised: #262019;
+    --cream: #F4E9D8;
+    --gold: #D4AF37;
+    --gold-dim: #8A722B;
+    --velvet: #B4483A;
+    --sage: #6E7B6A;
+    --line: #3A342B;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: "Inter", -apple-system, sans-serif;
+    line-height: 1.55;
+}
+
+/* Film-strip perforation bars, top and bottom of the page */
+.filmstrip {
+    height: 14px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--panel-raised) 0px, var(--panel-raised) 10px,
+        var(--ink) 10px, var(--ink) 22px
+    );
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+header {
+    padding: 40px 0 24px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 40px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.logo-mark {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    color: var(--velvet);
+    text-transform: uppercase;
+}
+
+.logo-title {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 3rem;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    text-shadow: 0 0 18px rgba(212, 175, 55, 0.25);
+}
+
+/* ---------- Hero / search ---------- */
+
+.hero {
+    padding: 20px 0 48px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    letter-spacing: 0.02em;
+    margin: 0 0 12px;
+    color: var(--cream);
+}
+
+.hero p {
+    color: #B9AF9E;
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin: 0 auto 32px;
+}
+
+.search-form {
+    display: flex;
+    gap: 12px;
+    max-width: 520px;
+    margin: 0 auto;
+    background: var(--panel);
+    border: 1px dashed var(--gold-dim);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.search-form input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--cream);
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    padding: 10px 12px;
+    outline: none;
+}
+
+.search-form input::placeholder {
+    color: #7A7264;
+}
+
+.search-form button {
+    background: var(--gold);
+    color: var(--ink);
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.search-form button:hover {
+    background: #E4C458;
+    transform: translateY(-1px);
+}
+
+.alert {
+    background: rgba(180, 72, 58, 0.15);
+    border: 1px solid var(--velvet);
+    color: #F0B4AC;
+    padding: 12px 16px;
+    border-radius: 8px;
+    max-width: 520px;
+    margin: 0 auto 20px;
+    font-size: 0.9rem;
+}
+
+/* ---------- Catalog chips ---------- */
+
+.catalog h2 {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 16px;
+}
+
+.chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-bottom: 40px;
+}
+
+.chip {
+    display: inline-block;
+    padding: 7px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: #C9BFAE;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.chip:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+/* ---------- Results page ---------- */
+
+.back-link {
+    display: inline-block;
+    color: var(--sage);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+.back-link:hover {
+    color: var(--gold);
+}
+
+.source-movie {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 28px;
+    margin-bottom: 32px;
+}
+
+.source-movie h1 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin: 0 0 8px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+.highlight {
+    color: var(--gold);
+}
+
+.genres {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--velvet);
+    margin: 0 0 10px;
+}
+
+.overview {
+    color: #C9BFAE;
+    font-size: 0.95rem;
+    max-width: 640px;
+}
+
+.results h2 {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 20px;
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+    padding-bottom: 48px;
+}
+
+.movie-card {
+    display: block;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.movie-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+}
+
+.movie-card h3 {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-size: 1.3rem;
+    letter-spacing: 0.01em;
+    margin: 0 0 6px;
+    color: var(--cream);
+}
+
+.movie-card .overview {
+    font-size: 0.85rem;
+    margin: 8px 0 14px;
+    color: #A69C8C;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.score-bar {
+    height: 4px;
+    background: var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.score-fill {
+    height: 100%;
+    background: var(--gold);
+}
+
+.score-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    color: var(--gold-dim);
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+    border-top: 1px solid var(--line);
+    padding: 24px 0 40px;
+    text-align: center;
+}
+
+footer p {
+    font-size: 0.78rem;
+    color: #6B6355;
+}
+
+/* ---------- Accessibility ---------- */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
+
+@media (max-width: 560px) {
+    .search-form {
+        flex-direction: column;
+    }
+    .logo-title {
+        font-size: 2.4rem;
+    }
+}
