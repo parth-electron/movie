@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Movie Recommender{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="filmstrip"></div>
+    <div class="container">
+        <header>
+            <a href="{{ url_for('home') }}" class="logo">
+                <span class="logo-mark">NOW SHOWING</span>
+                <span class="logo-title">Reel Match</span>
+            </a>
+        </header>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+        <footer>
+            <p>Content-based recommendations, matched on genre &amp; plot via TF-IDF cosine similarity.</p>
+        </footer>
+    </div>
+    <div class="filmstrip"></div>
+</body>
+</html>

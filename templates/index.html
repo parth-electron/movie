@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Movie Recommender — Search{% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <h1>Find your next favorite movie</h1>
+        <p>Pick a movie you like, and we'll recommend similar ones based on genre and plot.</p>
+
+        {% if error %}
+            <div class="alert">{{ error }}</div>
+        {% endif %}
+
+        <form action="{{ url_for('recommend_page') }}" method="get" class="search-form">
+            <input
+                type="text"
+                name="title"
+                list="movie-titles"
+                placeholder="e.g. Inception, The Godfather, Coco..."
+                autocomplete="off"
+                required
+            >
+            <datalist id="movie-titles">
+                {% for t in titles %}
+                    <option value="{{ t }}">
+                {% endfor %}
+            </datalist>
+            <button type="submit">Get Recommendations</button>
+        </form>
+    </section>
+
+    <section class="catalog">
+        <h2>Browse the catalog ({{ titles|length }} movies)</h2>
+        <div class="chip-list">
+            {% for t in titles %}
+                <a class="chip" href="{{ url_for('recommend_page', title=t) }}">{{ t }}</a>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

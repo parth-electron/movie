@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Recommendations for {{ source_movie.title }}{% endblock %}
+
+{% block content %}
+    <a href="{{ url_for('home') }}" class="back-link">&larr; Back to search</a>
+
+    <section class="source-movie">
+        <h1>Because you liked <span class="highlight">{{ source_movie.title }}</span></h1>
+        <p class="genres">{{ source_movie.genres | join(', ') }}</p>
+        <p class="overview">{{ source_movie.overview }}</p>
+    </section>
+
+    <section class="results">
+        <h2>You might also like</h2>
+        {% if results %}
+            <div class="results-grid">
+                {% for movie in results %}
+                    <a class="movie-card" href="{{ url_for('recommend_page', title=movie.title) }}">
+                        <h3>{{ movie.title }}</h3>
+                        <p class="genres">{{ movie.genres | join(', ') }}</p>
+                        <p class="overview">{{ movie.overview }}</p>
+                        <div class="score-bar">
+                            <div class="score-fill" style="width: {{ (movie.similarity * 100) | round(0, 'floor') }}%;"></div>
+                        </div>
+                        <span class="score-label">Match: {{ (movie.similarity * 100) | round(0, 'floor') | int }}%</span>
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No similar movies found.</p>
+        {% endif %}
+    </section>
+{% endblock %}
